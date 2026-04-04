@@ -1,0 +1,17 @@
+# Dependencies used internally by src/pageindex/ (vendored from VectifyAI/PageIndex)
+litellm==1.82.0
+python-dotenv==1.1.0
+pyyaml==6.0.2
+
+# LLM client
+openai>=1.0.0
+
+# Document extraction — used throughout (replaces PyMuPDF / PyPDF2)
+docling>=2.0.0
+
+# Section-Based Vector RAG
+sentence-transformers>=3.0.0
+faiss-cpu>=1.7.0
+
+# Evaluation
+deepeval>=1.0.0
