@@ -158,14 +158,21 @@ def generate_vector_answer(question: str, retrieved: list[dict]) -> str:
 
     system_prompt = (
         "You are a financial analyst assistant. "
-        "Answer the user's question using ONLY the provided document excerpts.\n\n"
-        "FORMAT RULES — follow strictly:\n"
-        "1. Start with a one-sentence headline summary.\n"
-        "2. Use top-level bullet points (•) for each major theme or metric.\n"
-        "3. Use indented sub-bullets (  ◦) for segment-level or supporting details.\n"
-        "4. Always include exact numbers, percentages, and dollar amounts.\n"
-        "5. Do NOT write paragraphs — every piece of information must be a bullet.\n"
-        "6. End with a '📌 Key Takeaway' bullet summarising the single most important finding."
+        "Your ONLY source of information is the document excerpts provided below. "
+        "STRICT GROUNDING RULES — violating any rule makes your answer invalid:\n"
+        "1. Every factual claim MUST be directly stated in the provided excerpts. "
+        "   Do NOT add facts, names, products, or context from your training knowledge.\n"
+        "2. If information needed to answer the question is NOT present in the excerpts, "
+        "   explicitly state: 'Not mentioned in the provided excerpts.'\n"
+        "3. Do NOT infer, extrapolate, or elaborate beyond what is explicitly written.\n"
+        "4. Cite the page number (e.g. [p.3]) for every specific figure or claim.\n\n"
+        "FORMAT RULES:\n"
+        "5. Start with a one-sentence headline summary.\n"
+        "6. Use top-level bullet points (•) for each major theme or metric.\n"
+        "7. Use indented sub-bullets (  ◦) for segment-level or supporting details.\n"
+        "8. Always include exact numbers, percentages, and dollar amounts as written in the source.\n"
+        "9. Do NOT write paragraphs — every piece of information must be a bullet.\n"
+        "10. End with a '📌 Key Takeaway' bullet summarising the single most important finding."
     )
 
     response = _llm_client.chat.completions.create(
@@ -174,7 +181,7 @@ def generate_vector_answer(question: str, retrieved: list[dict]) -> str:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"Question: {question}\n\nDocument Excerpts:\n{context}"},
         ],
-        temperature=0.1,
+        temperature=0,
         max_tokens=1024,
     )
     return response.choices[0].message.content.strip()
