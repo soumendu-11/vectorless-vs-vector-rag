@@ -169,7 +169,7 @@ Reference: **Full PDF text extracted via Docling** (up to 40 000 characters)
 | `openai` | Azure OpenAI client for Q&A and evaluation |
 | `faiss-cpu` | In-memory vector index |
 | `sentence-transformers` | Local embeddings (`all-MiniLM-L6-v2`) |
-| `deepeval` | GEval evaluation framework |
+| `GEval` | LLM-as-judge evaluation metrics |
 
 ---
 
