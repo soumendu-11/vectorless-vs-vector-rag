@@ -181,3 +181,4 @@ Reference: **Full PDF text extracted via Docling** (up to 40 000 characters)
 - [FinanceBench Paper](https://arxiv.org/pdf/2311.11944)
 - [Docling — IBM](https://github.com/DS4SD/docling)
 - [DeepEval](https://github.com/confident-ai/deepeval)
+- https://pub.towardsai.net/vectorless-rag-how-i-built-a-rag-system-without-embeddings-databases-or-vector-similarity-efccf21e42ff 
